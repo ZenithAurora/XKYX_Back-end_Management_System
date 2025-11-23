@@ -29,21 +29,21 @@ const checkVideoDuration = (file) => {
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { 
-    advertisements = [], 
+  const {
+    advertisements = [],
     uploadLoading,
-    error 
+    error
   } = useSelector((state) => state.advertisement || {});
-  
-  const { 
+
+  const {
     content: announcementContent,
     loading: announcementLoading,
     error: announcementError,
     announcementId,
   } = useSelector((state) => state.announcement || {});
-  
+
   const [posterFileList, setPosterFileList] = useState([]);
-  const [currentActivity, setCurrentActivity] = useState({ 
+  const [currentActivity, setCurrentActivity] = useState({
     poster: '',
     type: '',
   });
@@ -66,7 +66,7 @@ const Home = () => {
     }
     try {
       await dispatch(updateAnnouncement({
-        announcementId: announcementId, 
+        announcementId: announcementId,
         content: localAnnouncement,
       }));
       message.success('公告更新成功');
@@ -155,7 +155,7 @@ const Home = () => {
       render: (text, record) => {
         // 添加空值保护
         if (!record) return '-';
-        
+
         return (
           <div className="media-preview">
             {record.type === 'video' ? (
@@ -172,20 +172,20 @@ const Home = () => {
       key: 'action',
       render: (_, record) => (
         <Popconfirm
-        title="确认删除该广告？"
-        onConfirm={() => handleDelete(record.advertisementId)}
-        okText="确认"
-        cancelText="取消"
-      >
-        <Button type="link" danger>
-          删除
-        </Button>
-      </Popconfirm>
+          title="确认删除该广告？"
+          onConfirm={() => handleDelete(record.advertisementId)}
+          okText="确认"
+          cancelText="取消"
+        >
+          <Button type="link" danger>
+            删除
+          </Button>
+        </Popconfirm>
       ),
     },
   ];
 
-  return ( 
+  return (
     <div className="home-container">
       <div className="floating-button">
         <Button
@@ -201,7 +201,7 @@ const Home = () => {
 
       <div className="management-card">
         <h2 className="card-title">广告管理</h2>
-        
+
         <div className="upload-section">
           <Upload
             fileList={posterFileList}
@@ -209,15 +209,15 @@ const Home = () => {
             beforeUpload={handleFileUpload}
             maxCount={1}
           >
-            <Button 
+            <Button
               icon={<UploadOutlined />}
               className="upload-button"
             >
               上传广告
             </Button>
           </Upload>
-          <Button 
-            type="primary" 
+          <Button
+            type="primary"
             className="submit-button"
             onClick={handleAdSubmit}
             loading={uploadLoading}
@@ -233,10 +233,11 @@ const Home = () => {
           </div>
         ) : (
           <Table
+            size="middle"
             columns={columns}
             dataSource={advertisements}
             rowKey="advertisementId"
-            pagination={{ 
+            pagination={{
               pageSize: 3,
               showSizeChanger: false,
               hideOnSinglePage: true
@@ -252,13 +253,13 @@ const Home = () => {
         open={isAnnouncementModalOpen}
         onCancel={() => setIsAnnouncementModalOpen(false)}
         footer={null}
-         width="60vw"
+        width="60vw"
         className="announcement-modal"
-        style={{ top: 20 }} 
+        style={{ top: 20 }}
       >
         <Form.Item style={{ flex: 1, minHeight: '50vh' }}>
           <TextArea
-           rows={10} 
+            rows={10}
             value={localAnnouncement}
             onChange={(e) => setLocalAnnouncement(e.target.value)}
             placeholder="请输入公告内容..."
@@ -273,8 +274,8 @@ const Home = () => {
             <Button onClick={() => setIsAnnouncementModalOpen(false)}>
               取消
             </Button>
-            <Button 
-              type="primary" 
+            <Button
+              type="primary"
               onClick={handleSaveAnnouncement}
               loading={announcementLoading}
               disabled={localAnnouncement === announcementContent}

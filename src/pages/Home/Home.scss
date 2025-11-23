@@ -16,7 +16,7 @@
     top: 100px;
     right: 100px;
     z-index: 1000;
-    
+
     .ant-btn-circle {
       box-shadow: 0 4px 12px rgba(24, 144, 255, 0.4);
     }
@@ -35,7 +35,7 @@
     background: white;
     border-radius: 12px;
     padding: 24px;
-    margin-bottom: 24px;
+    // margin-bottom: 24px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 
     .card-title {
@@ -51,7 +51,8 @@
     gap: 16px;
     margin-bottom: 24px;
 
-    .upload-button, .submit-button {
+    .upload-button,
+    .submit-button {
       height: 40px;
       padding: 0 20px;
       border-radius: 8px;
@@ -62,12 +63,12 @@
   .empty-state {
     text-align: center;
     padding: 40px 0;
-    
+
     img {
       width: 200px;
       margin-bottom: 16px;
     }
-    
+
     p {
       color: #999;
       font-size: 14px;
@@ -76,7 +77,9 @@
 
   .ad-table {
     .media-preview {
-      img, video {
+
+      img,
+      video {
         width: 180px;
         height: 120px;
         object-fit: cover;
@@ -84,7 +87,7 @@
         background: #f0f0f0;
       }
     }
-    
+
     .ant-table {
       border-radius: 8px;
       overflow: hidden;

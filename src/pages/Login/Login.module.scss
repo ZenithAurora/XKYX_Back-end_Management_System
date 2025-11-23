@@ -1,0 +1,422 @@
+/* Login.module.scss */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.loginContainer {
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+  background-size: cover;
+}
+
+
+.loginCard {
+  width: 65%;
+  height: 65vh;
+  max-width: 1100px;
+  max-height: 700px;
+
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 36px;
+  display: flex;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 5s ease-in-out, box-shadow 5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+  }
+}
+
+.brandSection {
+  flex: 1.2;
+  background: linear-gradient(135deg, rgba(25, 42, 108, 0.9), rgba(37, 117, 252, 0.8));
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+    background-size: cover;
+    opacity: 0.2;
+  }
+}
+
+.brandContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  max-width: 600px;
+}
+
+.logo {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.logoCircle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: conic-gradient(transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent);
+    animation: rotate 10s linear infinite;
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.logoInnerCircle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+}
+
+.xike {
+  font-size: 42px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.yanxuan {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffdd40;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px rgba(255, 221, 64, 0.5);
+}
+
+.brandText {
+  margin-bottom: 100px;
+
+  h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+  }
+
+  p {
+    font-size: 18px;
+    opacity: 0.9;
+  }
+}
+
+.brandFooter {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  right: 0;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+
+.loginSection {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.4);
+  // backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.loginContent {
+  max-width: 420px;
+  width: 90%;
+
+  h2 {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a2a6c;
+    margin-bottom: 8px;
+  }
+
+  p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+}
+
+.loginForm {
+  margin-top: 20px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #444;
+    font-size: 16px;
+  }
+}
+
+.inputWithIcon {
+  position: relative;
+
+  .icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    font-size: 18px;
+    z-index: 2;
+  }
+
+  .userIcon::before {
+    content: '👤';
+  }
+
+  .lockIcon::before {
+    content: '🔒';
+  }
+
+  input {
+    width: 100%;
+    padding: 16px 20px 16px 55px;
+    border: 1px solid rgba(250, 128, 114, 0.804);
+    border-radius: 32px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+    &:focus {
+      outline: none;
+      border-color: orange;
+      background: #fff;
+    }
+
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.rememberMe {
+  display: flex;
+  align-items: center;
+  color: #555;
+  cursor: pointer;
+
+  input {
+    margin-right: 10px;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: #1a2a6c;
+  }
+}
+
+.forgotPassword {
+  color: #1a2a6c;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #2575fc;
+    text-decoration: underline;
+  }
+}
+
+.loginButton {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #6076cf, #3880fc);
+  color: white;
+  border: none;
+  border-radius: 32px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.8s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(37, 117, 252, 0.3);
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 12px 25px rgba(37, 117, 252, 0.4);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.loading {
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+.spinner {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #ddd;
+  }
+
+  span {
+    padding: 0 15px;
+    color: #888;
+    font-size: 14px;
+  }
+}
+
+
+.copyright {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  z-index: 1;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+  .loginCard {
+    flex-direction: column;
+    height: auto;
+    max-height: 95vh;
+  }
+
+  .brandSection {
+    padding: 30px 20px;
+  }
+
+  .loginSection {
+    padding: 30px 20px;
+  }
+
+  .logoCircle {
+    width: 140px;
+    height: 140px;
+
+    .logoInnerCircle {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  .xike {
+    font-size: 32px;
+  }
+
+  .yanxuan {
+    font-size: 24px;
+  }
+
+  .brandText h1 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 576px) {
+  .socialLogin {
+    flex-direction: column;
+  }
+
+  .featureItem {
+    flex-direction: column;
+    text-align: center;
+
+    .featureIcon {
+      margin-right: 0;
+      margin-bottom: 15px;
+    }
+  }
+}

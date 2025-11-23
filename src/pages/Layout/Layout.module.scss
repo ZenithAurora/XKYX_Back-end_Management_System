@@ -1,0 +1,255 @@
+$primary-color: #1890ff;
+$sider-bg: #001529;
+$header-height: 64px;
+$border-radius: 8px;
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+.enterpriseLayout {
+  min-height: 100vh;
+  background: #f5f7fa;
+  font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+  .sider {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+    box-shadow: $box-shadow;
+    border-right: none;
+    transition: all 0.2s;
+    overflow: hidden;
+    height: 100vh;
+    background-color: $sider-bg !important;
+
+    .logoContainer {
+      height: $header-height;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 16px;
+      background: $sider-bg !important;
+      transition: all 2s;
+
+      .logoImg {
+        height: 36px;
+        margin-right: 20px;
+        filter: brightness(0) invert(1);
+      }
+
+      .logoText {
+        font-size: 18px;
+        font-weight: 600;
+        color: rgb(45, 75, 245);
+        white-space: nowrap;
+        transition: opacity 0.2s;
+      }
+    }
+
+    .navMenu {
+      border-right: none;
+      padding: 16px 0;
+      background: $sider-bg;
+      transition: all 0.2s;
+
+      :global {
+        .ant-menu-item {
+          margin: 8px 16px;
+          padding: 0 16px !important;
+          height: 48px;
+          line-height: 48px;
+          border-radius: $border-radius;
+          color: rgba(255, 255, 255, 0.65);
+          transition: all 0.3s;
+
+          .menuIcon {
+            font-size: 18px;
+            margin-right: 12px;
+          }
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+          }
+
+          &.ant-menu-item-selected {
+            background: linear-gradient(90deg, rgba(24, 144, 255, 0.3), transparent);
+            color: white;
+            font-weight: 500;
+            border-left: 3px solid $primary-color;
+          }
+        }
+      }
+    }
+
+    .collapseButton {
+      position: absolute;
+      bottom: 20px;
+      left: 45px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.65);
+      background: rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.3);
+        color: white;
+      }
+    }
+  }
+
+  .contentLayout {
+    margin-left: 20px;
+    transition: margin 0.2s;
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      padding: 0;
+      height: $header-height;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      background: white;
+
+      .headerContent {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        padding: 0 24px;
+
+        .breadcrumb {
+          font-size: 16px;
+          font-weight: 500;
+          margin-left: 200px;
+
+          .currentPage {
+            color: $primary-color;
+            position: relative;
+            padding-left: 20px;
+
+            &::before {
+              content: '';
+              position: absolute;
+              left: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 6px;
+              height: 6px;
+              background: $primary-color;
+              border-radius: 50%;
+            }
+          }
+        }
+
+        .userActions {
+          .userInfo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: $border-radius;
+            transition: all 0.3s;
+
+            &:hover {
+              background: rgba(0, 0, 0, 0.03);
+            }
+
+            .userAvatar {
+              margin-right: 10px;
+              background: $primary-color;
+            }
+
+            .username {
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+
+    .mainContent {
+      padding: 4px;
+      min-height: calc(100vh - #{$header-height});
+
+      .contentWrapper {
+        background: white;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow;
+        min-height: calc(100vh - #{$header-height + 48px});
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 5px;
+          height: 100%;
+          background: linear-gradient(to bottom, $primary-color, #6eb9ff);
+        }
+      }
+    }
+  }
+
+  // 侧边栏折叠状态
+  :global(.ant-layout-sider-collapsed) {
+    .logoContainer {
+      justify-content: center;
+
+      .logoText {
+        display: none;
+      }
+    }
+
+    .navMenu {
+      :global {
+        .ant-menu-item {
+          padding: 0 24px !important;
+
+          :global(.ant-menu-title-content) {
+            display: none;
+          }
+
+          .menuIcon {
+            margin-right: 0;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+
+    &+.contentLayout {
+      margin-left: -120px;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .enterpriseLayout {
+    .sider {
+      z-index: 1000;
+    }
+
+    .contentLayout {
+      margin-left: 0;
+
+      .header {
+        padding-left: 80px;
+      }
+    }
+
+    :global(.ant-layout-sider-collapsed)+.contentLayout {
+      margin-left: 0;
+
+      .header {
+        padding-left: 0;
+      }
+    }
+  }
+}
